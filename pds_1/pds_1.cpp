@@ -13,6 +13,40 @@ bool equivalence(bool p, bool q) {
     return implication(p, q) && implication(q, p);
 }
 
+// Нова функція для порозрядних операцій OR, AND, XOR
+void bitwise_operations(const string& a, const string& b, string& or_result, string& and_result, string& xor_result) {
+    int n = a.length();  // Довжина рядків
+    or_result = "";
+    and_result = "";
+    xor_result = "";
+
+    for (int i = 0; i < n; ++i) {
+        // Операція OR
+        if (a[i] == '1' || b[i] == '1') {
+            or_result += '1';
+        }
+        else {
+            or_result += '0';
+        }
+
+        // Операція AND
+        if (a[i] == '1' && b[i] == '1') {
+            and_result += '1';
+        }
+        else {
+            and_result += '0';
+        }
+
+        // Операція XOR
+        if (a[i] != b[i]) {
+            xor_result += '1';
+        }
+        else {
+            xor_result += '0';
+        }
+    }
+}
+
 int main() {
     bool p, q;
 
@@ -59,39 +93,13 @@ int main() {
         return 1;
     }
 
-    int n = a.length(); // Довжина рядків
-    string x = "", y = "", z = ""; // Результати для OR, AND, XOR
-
-    for (int i = 0; i < n; ++i) {
-        // Операція OR
-        if (a[i] == '1' || b[i] == '1') {
-            x += '1';
-        }
-        else {
-            x += '0';
-        }
-
-        // Операція AND
-        if (a[i] == '1' && b[i] == '1') {
-            y += '1';
-        }
-        else {
-            y += '0';
-        }
-
-        // Операція XOR
-        if (a[i] != b[i]) {
-            z += '1';
-        }
-        else {
-            z += '0';
-        }
-    }
+    string or_result, and_result, xor_result;
+    bitwise_operations(a, b, or_result, and_result, xor_result);
 
     // Виведення результатів
-    cout << "Result OR:  " << x << endl;
-    cout << "Result AND: " << y << endl;
-    cout << "Result XOR: " << z << endl;
+    cout << "Result OR:  " << or_result << endl;
+    cout << "Result AND: " << and_result << endl;
+    cout << "Result XOR: " << xor_result << endl;
 
     return 0;
 }
