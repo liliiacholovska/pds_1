@@ -88,10 +88,10 @@ int main() {
     cin >> b;
 
     // Перевірка чи рядки мають однакову довжину
-    if (a.length() != b.length()) {
-        cout << "Error: Strings must be the same length" << endl;
-        return 1;
-    }
+   if (a.length() != 10 || b.length() != 10) {
+    cout << "Error: Strings must be exactly 10 characters long" << endl;
+    return 1;
+   }
 
     string or_result, and_result, xor_result;
     bitwise_operations(a, b, or_result, and_result, xor_result);
